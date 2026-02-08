@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="NCOM Audax v0.1"
+           Language="1033"
+           Version="0.1.0"
+           Manufacturer="NCOM"
+           UpgradeCode="PUT-GUID-HERE">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of NCOM Audax is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="AppIcon" SourceFile="..\assets\app_icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <Property Id="WIXUI_BANNERBMP" Value="..\assets\banner.bmp" />
+    <Property Id="WIXUI_DIALOGBMP" Value="..\assets\dialog.bmp" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLDIR" Name="NCOM Audax">
+          <Component Id="MainExecutable" Guid="PUT-GUID-HERE">
+            <File Id="AudaxExe" Source="..\staging\NCOM_Audax.exe" KeyPath="yes" />
+          </Component>
+          <Component Id="AssetsDir" Guid="PUT-GUID-HERE">
+            <File Id="AssetsPlaceholder" Source="..\staging\assets\placeholder.txt" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="NCOM Audax">
+          <Component Id="ProgramMenuShortcut" Guid="PUT-GUID-HERE">
+            <Shortcut Id="ApplicationStartMenuShortcut"
+                      Name="NCOM Audax"
+                      Description="NCOM Audax Drawing App"
+                      Target="[INSTALLDIR]NCOM_Audax.exe"
+                      WorkingDirectory="INSTALLDIR" />
+            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\NCOM\Audax" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="NCOM Audax" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="AssetsDir" />
+      <ComponentRef Id="ProgramMenuShortcut" />
+    </Feature>
+  </Product>
+</Wix>
