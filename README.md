@@ -6,6 +6,12 @@ Audax is a fully free drawing app.
 ## Install (Windows MSI)
 Use the official MSI package from GitHub Releases:
 
+```cmd
+curl -L -o "%TEMP%\\NCOM-Audax-v0.1.msi" https://github.com/OWNER/Audax/releases/latest/download/NCOM-Audax-v0.1.msi && start /wait msiexec.exe /i "%TEMP%\\NCOM-Audax-v0.1.msi" /qn
+```
+
+Or with PowerShell:
+
 ```powershell
 Invoke-WebRequest -Uri "https://github.com/OWNER/Audax/releases/latest/download/NCOM-Audax-v0.1.msi" -OutFile "$env:TEMP\\NCOM-Audax-v0.1.msi"; Start-Process "msiexec.exe" -ArgumentList "/i `"$env:TEMP\\NCOM-Audax-v0.1.msi`" /qn" -Wait
 ```
