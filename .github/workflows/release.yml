@@ -1,0 +1,49 @@
+name: release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-msi:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install WiX Toolset
+        run: dotnet tool install --global wix
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Stage assets
+        run: installer/scripts/build_msi.ps1
+        shell: pwsh
+
+      - name: Upload MSI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: NCOM-Audax-v0.1.msi
+          path: dist/NCOM-Audax-v0.1.msi
+
+  github-release:
+    needs: build-msi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download MSI artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: NCOM-Audax-v0.1.msi
+          path: dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/NCOM-Audax-v0.1.msi

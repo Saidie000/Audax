@@ -7,6 +7,8 @@ pub struct PackagingConfig {
     pub manufacturer: String,
     pub msi_output_path: String,
     pub github_release_tag: String,
+    pub wix_config_path: String,
+    pub wix_product_wxs: String,
 }
 
 impl PackagingConfig {
@@ -18,12 +20,14 @@ impl PackagingConfig {
             manufacturer: "NCOM".to_string(),
             msi_output_path: "dist/NCOM-Audax-v0.1.msi".to_string(),
             github_release_tag: "v0.1.0".to_string(),
+            wix_config_path: "installer/wix/wix.toml".to_string(),
+            wix_product_wxs: "installer/wix/Product.wxs".to_string(),
         }
     }
 
     /// Placeholder for MSI packaging workflow integration.
     pub fn build_msi(&self) {
-        // TODO: integrate WiX or MSIX tooling for MSI generation.
+        // TODO: integrate WiX tooling (wix build) for MSI generation.
     }
 
     /// Placeholder for creating a GitHub Release payload.
