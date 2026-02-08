@@ -1,0 +1,26 @@
+[package]
+name = "NCOM Audax"
+version = "0.1.0"
+manufacturer = "NCOM"
+
+[product]
+product_code = "PUT-GUID-HERE"
+upgrade_code = "PUT-GUID-HERE"
+
+[build]
+output = "../../dist/NCOM-Audax-v0.1.msi"
+platform = "x64"
+
+[ui]
+# Use the stock WixUI_InstallDir for a clean install wizard.
+# You can override the banner and dialog images with assets in installer/assets.
+installer_ui = "WixUI_InstallDir"
+license_rtf = "../assets/license.rtf"
+banner_bmp = "../assets/banner.bmp"
+dialog_bmp = "../assets/dialog.bmp"
+
+[files]
+# The main executable and assets should be copied into a build staging folder,
+# then referenced by Product.wxs during MSI build.
+app_exe = "../staging/NCOM_Audax.exe"
+assets_dir = "../staging/assets"
