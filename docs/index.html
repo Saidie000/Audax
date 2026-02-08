@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NCOM Audax Docs</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Docs.Audax</p>
+        <h1>NCOM Audax Documentation</h1>
+        <p class="hero__subtitle">
+          Official documentation hub for the NCOM Audax drawing application.
+        </p>
+        <div class="hero__actions">
+          <a class="button" href="#getting-started">Get started</a>
+          <a class="button button--ghost" href="#packaging">MSI packaging</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section id="getting-started" class="card">
+        <h2>Getting started</h2>
+        <p>
+          NCOM Audax is a high-performance Windows drawing application built with
+          Rust, Vello, and wgpu. Use this guide as the canonical reference for
+          setup, tooling, and feature planning.
+        </p>
+        <ul>
+          <li>Clone the repository and install the Rust toolchain.</li>
+          <li>Build with <code>cargo build --release</code>.</li>
+          <li>Review module scaffolding in <code>src/</code> for core systems.</li>
+        </ul>
+      </section>
+
+      <section id="features" class="card">
+        <h2>Feature map</h2>
+        <div class="grid">
+          <div>
+            <h3>Canvas & Layers</h3>
+            <p>Multi-layer canvas with blending, masks, and infinite mode.</p>
+          </div>
+          <div>
+            <h3>Brush Engine</h3>
+            <p>Pressure, tilt, jitter, spacing, and texture-driven strokes.</p>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <p>Selection, transform, QuickShape, snap-to-shape, and arrows.</p>
+          </div>
+          <div>
+            <h3>Input</h3>
+            <p>Surface Pen + Windows Ink integration with palm rejection.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="packaging" class="card">
+        <h2>MSI packaging</h2>
+        <p>
+          WiX tooling and scripts are included to produce a clean installer
+          wizard. See <code>installer/</code> for staging scripts, WiX templates,
+          and assets placeholders.
+        </p>
+        <ol>
+          <li>Build release: <code>cargo build --release</code></li>
+          <li>Stage output: <code>installer/scripts/stage_release.sh</code></li>
+          <li>Build MSI: <code>wix build installer/wix/Product.wxs</code></li>
+        </ol>
+      </section>
+
+      <section id="release" class="card">
+        <h2>Release workflow</h2>
+        <p>
+          The GitHub Actions workflow in <code>.github/workflows/release.yml</code>
+          builds the MSI on Windows and uploads it to a GitHub Release. Tag a
+          release with <code>v0.1.0</code> to publish.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2024 NCOM Audax. Documentation for internal and public release.</p>
+    </footer>
+  </body>
+</html>
