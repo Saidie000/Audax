@@ -18,6 +18,8 @@ Invoke-WebRequest -Uri "https://github.com/OWNER/Audax/releases/latest/download/
 
 Replace `OWNER` with your GitHub organization/user name.
 
+Audax is a fully free drawing app.
+
 ## Packaging & Release (NCOM Audax v0.1)
 - MSI packaging and GitHub Release automation are scaffolded in `src/package.rs` and should be wired into a CI pipeline or build tooling.
 - The app icon asset should be placed at `assets/icons/app_icon.png` (see placeholder notes in `assets/icons/README.md`).
