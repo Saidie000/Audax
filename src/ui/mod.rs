@@ -3,15 +3,18 @@
 mod menu;
 mod color_palette;
 mod brush_editor;
+mod icon;
 
 pub use brush_editor::{BrushEditorState, BrushPreset};
 pub use color_palette::{ColorPalette, GradientStop};
+pub use icon::AppIcon;
 pub use menu::MenuState;
 
 pub struct UiState {
     pub menu: MenuState,
     pub palette: ColorPalette,
     pub brush_editor: BrushEditorState,
+    pub app_icon: AppIcon,
 }
 
 impl UiState {
@@ -21,6 +24,7 @@ impl UiState {
             menu: MenuState::new(),
             palette: ColorPalette::new(),
             brush_editor: BrushEditorState::new(),
+            app_icon: AppIcon::new("NCOM Audax", "assets/icons/app_icon.png"),
         }
     }
 
