@@ -1,0 +1,15 @@
+[package]
+name = "ncom_audax"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wgpu = "0.19"
+vello = "0.2"
+windows = { version = "0.54", features = ["UI_Input_Inking", "UI_Core", "Win32_Foundation", "Win32_UI_Input_Ink", "Win32_UI_Input_Pointer", "Win32_UI_WindowsAndMessaging"] }
+pollster = "0.3"
+thiserror = "1"
+
+[features]
+# Feature flag placeholder for optional infinite canvas implementations.
+infinite-canvas = []
